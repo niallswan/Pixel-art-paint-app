@@ -1,14 +1,18 @@
 // App elements
 let container = document.querySelector(".container");
-let gridButton = document.getElementById("submit-grid");
-let clearGridButton = document.getElementById("clear-grid");
+let gridBtn = document.getElementById("submit-grid");
+let clearGridBtn = document.getElementById("clear-grid");
 let gridWidth = document.getElementById("width-range");
 let gridHeight = document.getElementById("height-range");
-let colorButton = document.getElementById("color-input");
+let colorBtn = document.getElementById("color-input");
 let eraseBtn = document.getElementById("erase-btn");
 let paintBtn = document.getElementById("paint-btn");
 let widthValue = document.getElementById("width-value");
 let heightValue = document.getElementById("height-value");
+
+//Sound
+let click = new Audio('click.mp3');
+click.volume = 0.3;
 
 // Mouse and touch inputs
 let events = {
@@ -44,7 +48,11 @@ const isTouchDevice = () =>{
 isTouchDevice();
 
 // Create grid
-gridButton.addEventListener("click", ()=>{
+gridBtn.addEventListener("click", ()=>{
+    click.pause();
+    click.currentTime = 0;
+    click.play();
+
     container.innerHTML = "";
     let count = 0;
 
@@ -64,7 +72,7 @@ gridButton.addEventListener("click", ()=>{
                 if(erase){
                     col.style.backgroundColor = "transparent";
                 }else{
-                    col.style.backgroundColor = colorButton.value;
+                    col.style.backgroundColor = colorBtn.value;
                 }
             });
 
@@ -93,7 +101,7 @@ function checker(elementId){
     gridColumns.forEach((element)=>{
         if(elementId == element.id){
             if(draw && !erase){
-                element.style.backgroundColor = colorButton.value;
+                element.style.backgroundColor = colorBtn.value;
             }else if(draw && erase){
                 element.style.backgroundColor = "transparent";
             }
@@ -102,12 +110,20 @@ function checker(elementId){
 }
 
 // Clear canvas
-clearGridButton.addEventListener("click", ()=>{
+clearGridBtn.addEventListener("click", ()=>{
+    click.pause();
+    click.currentTime = 0;
+    click.play();
+
     container.innerHTML = "";
 });
 
 // Turn on eraser mode
 eraseBtn.addEventListener("click", ()=>{
+    click.pause();
+    click.currentTime = 0;
+    click.play();
+
     erase = true;
     eraseBtn.style.backgroundColor = "#2c30ff";
     paintBtn.style.backgroundColor = "#6d70ff";
@@ -116,9 +132,20 @@ eraseBtn.addEventListener("click", ()=>{
 
 // Turn on paint mode
 paintBtn.addEventListener("click", () => {
+    click.pause();
+    click.currentTime = 0;
+    click.play();
+
     erase = false;
     paintBtn.style.backgroundColor = "#2c30ff";
     eraseBtn.style.backgroundColor = "#6d70ff";
+});
+
+// Play sound on color picker click
+colorBtn.addEventListener("click", ()=>{
+    click.pause();
+    click.currentTime = 0;
+    click.play();
 });
 
 // Width input
