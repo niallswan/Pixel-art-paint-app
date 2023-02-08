@@ -19,11 +19,12 @@
 
 body{
     align-items: center;
-    background: linear-gradient(310deg, #55079d, #6d70ff, #77d6fb, #00ffd9bc);
-    background-size: 100% 100%;
+    background: linear-gradient(300deg, #55079d, #6d70ff, #77d6fb, #00ffd9bc);
+    background-size: 300% 300%;
     display: flex;
     height: inherit;
     justify-content: center;
+    animation: gradient 15s ease infinite;
 }
 
 .wrapper{
@@ -52,4 +53,12 @@ span{
     justify-content: space-between;
     margin-bottom: 20px;
     gap: 10px;
+}
+
+button{
+    background-color: #6d70ff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: #fff;
 }
